@@ -1,0 +1,130 @@
+{
+    "app-id": "net.sourceforge.mars-game",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.4",
+    "sdk": "org.freedesktop.Sdk",
+    "finish-args": [
+        "--device=dri",
+        "--persist=.marsshooter",
+        "--share=ipc",
+        "--socket=x11",
+        "--socket=pulseaudio"
+    ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/aclocal",
+        "/share/gtk-doc",
+        "/share/man",
+        "*.la", "*.a"
+    ],
+    "command": "marsshooter",
+    "rename-appdata-file": "marsshooter.appdata.xml",
+    "rename-desktop-file": "marsshooter.desktop",
+    "rename-icon": "marsshooter",
+    "modules": [
+        {
+            "name": "udev",
+            "cleanup": [
+                "/etc",
+                "/libexec"
+            ],
+            "config-opts": [
+                "--disable-hwdb",
+                "--disable-logging",
+                "--disable-gudev",
+                "--disable-introspection",
+                "--disable-keymap",
+                "--disable-mtd_probe"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://kernel.org/pub/linux/utils/kernel/hotplug/udev-175.tar.bz2",
+                    "sha256": "4c7937fe5a1521316ea571188745b9a00a9fdf314228cffc53a7ba9e5968b7ab"
+                }
+            ]
+        },
+        {
+            "name": "openal",
+            "buildsystem": "cmake",
+            "cleanup": [
+                "/bin"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://kcat.strangesoft.net/openal-releases/openal-soft-1.17.2.tar.bz2",
+                    "sha256": "a341f8542f1f0b8c65241a17da13d073f18ec06658e1a1606a8ecc8bbc2b3314"
+                }
+            ]
+        },
+        {
+            "name": "SFML",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DSFML_INSTALL_PKGCONFIG_FILES=TRUE"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.sfml-dev.org/files/SFML-2.4.2-sources.zip",
+                    "sha256": "8ba04f6fde6a7b42527d69742c49da2ac529354f71f553409f9f821d618de4b6"
+                }
+            ]
+        },
+        {
+            "name": "fribidi",
+            "cleanup": [
+                "/bin"
+            ],
+            "config-opts": [
+                "--without-glib",
+                "--disable-static"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://fribidi.org/download/fribidi-0.19.7.tar.bz2",
+                    "sha256": "08222a6212bbc2276a2d55c3bf370109ae4a35b689acbc66571ad2a670595a8e"
+                }
+            ]
+        },
+        {
+            "name": "taglib",
+            "buildsystem": "cmake",
+            "cleanup": [
+                "/bin"
+            ],
+            "config-opts": [
+                "-DBUILD_SHARED_LIBS=ON"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://taglib.org/releases/taglib-1.11.1.tar.gz",
+                    "sha256": "b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b"
+                }
+            ]
+        },
+        {
+            "name": "mars-game",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-Dmars_EXE_DEST_DIR=/app/bin",
+                "-Dmars_DATA_DEST_DIR=/app/share/marsshooter"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/jwrdegoede/M.A.R.S./archive/marsshooter-0.7.6.tar.gz",
+                    "sha256": "1ff063590d71580baa432b8801987e79571d611e410d0302d5c376851d6e3378"
+                },
+                {
+                    "type": "patch",
+                    "path": "mars-Set-correct-datadir-for-prefix-usr.patch"
+                }
+            ]
+        }
+    ]
+}

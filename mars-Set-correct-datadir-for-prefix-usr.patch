@@ -1,0 +1,41 @@
+From 79cd4d922f6d9c578caa22192567a0870d31eba7 Mon Sep 17 00:00:00 2001
+From: Cosimo Cecchi <cosimoc@gnome.org>
+Date: Sat, 11 Mar 2017 18:34:51 -0800
+Subject: [PATCH] Set correct datadir for prefix != /usr
+
+---
+ CMakeLists.txt          | 1 +
+ src/System/settings.cpp | 5 ++++-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8427f07..bb4afaa 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -21,6 +21,7 @@ cmake_minimum_required(VERSION 2.8.0)
+ # Installation directories
+ #####################################################################
+ set(mars_DATA_DEST_DIR ${CMAKE_INSTALL_PREFIX}/share/games/marsshooter CACHE STRING "marsshooter data files destdir")
++add_definitions(-DMARS_DATADIR="${mars_DATA_DEST_DIR}/")
+ set(mars_EXE_DEST_DIR ${CMAKE_INSTALL_PREFIX}/games CACHE STRING "marsshooter exe destdir")
+ 
+ #####################################################################
+diff --git a/src/System/settings.cpp b/src/System/settings.cpp
+index c843928..6481ec4 100644
+--- a/src/System/settings.cpp
++++ b/src/System/settings.cpp
+@@ -309,7 +309,10 @@ namespace settings {
+             # ifdef __linux__
+                 if (std::ifstream((C_dataPath + "locales/English.txt").c_str()))
+                     success = true;
+-                else if (std::ifstream("/usr/share/marsshooter/locales/English.txt")) {
++                else if (std::ifstream(MARS_DATADIR "locales/English.txt")) {
++                    C_dataPath = MARS_DATADIR;
++                    success = true;
++                } else if (std::ifstream("/usr/share/marsshooter/locales/English.txt")) {
+                     C_dataPath = "/usr/share/marsshooter/";
+                     success = true;
+                 } else if (std::ifstream("/usr/share/games/marsshooter/locales/English.txt")) {
+-- 
+2.12.0
+
