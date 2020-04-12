@@ -1,7 +1,7 @@
 {
     "app-id": "net.sourceforge.mars-game",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "1.6",
+    "runtime-version": "19.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=dri",
@@ -23,41 +23,24 @@
     "rename-desktop-file": "marsshooter.desktop",
     "rename-icon": "marsshooter",
     "modules": [
-        "shared-modules/udev/udev-175.json",
+        "shared-modules/gudev/gudev.json",
         {
             "name": "SFML",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-DSFML_INSTALL_PKGCONFIG_FILES=TRUE"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://www.sfml-dev.org/files/SFML-2.4.2-sources.zip",
-                    "sha256": "8ba04f6fde6a7b42527d69742c49da2ac529354f71f553409f9f821d618de4b6"
-                }
-            ]
-        },
-        {
-            "name": "fribidi",
-            "cleanup": [
-                "/bin"
-            ],
-            "config-opts": [
-                "--without-glib",
-                "--disable-static"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://fribidi.org/download/fribidi-0.19.7.tar.bz2",
-                    "sha256": "08222a6212bbc2276a2d55c3bf370109ae4a35b689acbc66571ad2a670595a8e"
+                    "url": "http://www.sfml-dev.org/files/SFML-2.5.1-sources.zip",
+                    "sha256": "bf1e0643acb92369b24572b703473af60bac82caf5af61e77c063b779471bb7f"
                 }
             ]
         },
         {
             "name": "taglib",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "cleanup": [
                 "/bin"
             ],
@@ -74,7 +57,7 @@
         },
         {
             "name": "mars-game",
-            "buildsystem": "cmake",
+            "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-Dmars_EXE_DEST_DIR=/app/bin",
                 "-Dmars_DATA_DEST_DIR=/app/share/marsshooter"
@@ -88,6 +71,10 @@
                 {
                     "type": "patch",
                     "path": "mars-Set-correct-datadir-for-prefix-usr.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "2f98279d1867c9cfbfacf4c0b3925edb38c03362.patch"
                 }
             ]
         }
