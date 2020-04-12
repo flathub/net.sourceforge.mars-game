@@ -1,0 +1,26 @@
+From 2f98279d1867c9cfbfacf4c0b3925edb38c03362 Mon Sep 17 00:00:00 2001
+From: Ben Nahill <bnahill@gmail.com>
+Date: Sat, 12 Oct 2019 13:13:46 -0400
+Subject: [PATCH] Fixed out-of-order array bounds check.
+
+Bounds were being checked only after the out-of-bounds check, causing a
+segfault when all channels were in use.
+---
+ src/Media/sound.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/Media/sound.cpp b/src/Media/sound.cpp
+index c05a6c5..15bc278 100644
+--- a/src/Media/sound.cpp
++++ b/src/Media/sound.cpp
+@@ -47,8 +47,8 @@ namespace sound {
+             // check if sound is already loaded
+             if (sounds_[sound] != NULL) {
+                 // if its already loaded search for free soundChannel_
+-                int i(0);
+-                while (soundChannel_[i].getStatus() == sf::Sound::Playing && i<CHANNELCOUNT) ++i;
++                int i = 0;
++                while((i < CHANNELCOUNT) && (soundChannel_[i].getStatus() == sf::Sound::Playing)) i++;
+                 if (i < CHANNELCOUNT) {
+                     // play sound with random pitch
+                     soundChannel_[i].setBuffer(*sounds_[sound]);
