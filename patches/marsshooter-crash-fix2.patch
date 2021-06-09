@@ -1,0 +1,22 @@
+diff -ur M.A.R.S.-marsshooter-0.7.6/src/Media/file.cpp M.A.R.S.-marsshooter-0.7.6.fixed/src/Media/file.cpp
+--- M.A.R.S.-marsshooter-0.7.6/src/Media/file.cpp	2016-01-10 14:40:55.000000000 +0100
++++ M.A.R.S.-marsshooter-0.7.6.fixed/src/Media/file.cpp	2019-08-21 17:05:42.647215841 +0200
+@@ -37,15 +37,15 @@
+             while (std::getline(fileStream, line, '\n')) {
+                 ++ lineCount;
+                 // remove '\r' at end of lines, when file has a CR LF EOL (windows...)
+-                if (*(line.end()-1) == '\r')
++                if (line.size() && *(line.end()-1) == '\r')
+                     line.erase(line.end()-1);
+                 // Convert it to utf-32
+                 int inSize = line.size();
+-                FriBidiChar logical[inSize];
++                FriBidiChar logical[inSize + 1];
+                 const char* tmp(line.c_str());
+                 int outSize = fribidi_charset_to_unicode(FRIBIDI_CHAR_SET_UTF8, tmp, inSize, logical);
+ 
+-                FriBidiChar visual[outSize];
++                FriBidiChar visual[outSize + 1];
+                 FriBidiParType base = FRIBIDI_PAR_LTR;
+                 fribidi_log2vis(logical, outSize, &base, visual, NULL, NULL, NULL);
+ 

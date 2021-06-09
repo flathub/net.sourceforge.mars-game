@@ -1,0 +1,43 @@
+https://retrace.fedoraproject.org/faf/problems/bthash/?bth=4ca0f44edb8663f0ff63493eb5249987f7484c98
+
+diff -up M.A.R.S.-marsshooter-0.7.6/include/Controllers/BotController.hpp~ M.A.R.S.-marsshooter-0.7.6/include/Controllers/BotController.hpp
+--- M.A.R.S.-marsshooter-0.7.6/include/Controllers/BotController.hpp~	2016-01-10 14:40:55.000000000 +0100
++++ M.A.R.S.-marsshooter-0.7.6/include/Controllers/BotController.hpp	2017-01-19 13:12:39.917136648 +0100
+@@ -99,7 +99,7 @@ class BotController: public Controller {
+         void     shootPoint(Vector2f const& location, bool avoidTeamMembers = true);
+ 
+         Vector2f nextRoutePoint_;
+-        TacticalZone* toCover_;
++        float toCoverRadius_;
+         const float strength_;
+ 
+         //path variables
+diff -up M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotControllerTeamActions.cpp~ M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotControllerTeamActions.cpp
+--- M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotControllerTeamActions.cpp~	2016-01-10 14:40:55.000000000 +0100
++++ M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotControllerTeamActions.cpp	2017-01-19 13:12:28.214068429 +0100
+@@ -175,10 +175,11 @@ void  BotController::attackTarget() {
+ 
+ void BotController::protectZone() {
+     if (nextRoutePoint_.x_ == FLT_MAX) {
+-        toCover_ = static_cast<TacticalZone*>(currentJob_.object_);
++        TacticalZone* toCover_ = static_cast<TacticalZone*>(currentJob_.object_);
+         nextRoutePoint_ = toCover_->getRandomPoint();
++        toCoverRadius_ = toCover_->radius_;
+     }
+-    if (moveTo(nextRoutePoint_, 0.5f, false, toCover_->radius_ / 4.f + 10.f)) {
++    if (moveTo(nextRoutePoint_, 0.5f, false, toCoverRadius_ / 4.f + 10.f)) {
+         nextRoutePoint_.x_ = FLT_MAX;
+     }
+ }
+diff -up M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotController.cpp~ M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotController.cpp
+--- M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotController.cpp~	2016-01-10 14:40:55.000000000 +0100
++++ M.A.R.S.-marsshooter-0.7.6/src/Controllers/BotController.cpp	2017-01-19 13:17:58.399993145 +0100
+@@ -38,7 +38,7 @@ BotController::BotController(Player* sla
+     specialChangeTimer_(randomizer::random(0.f, 0.5f)),
+     currentJob_(Job::jCharge, 1),
+     nextRoutePoint_(FLT_MAX, FLT_MAX),
+-    toCover_(NULL),
++    toCoverRadius_(0.f),
+     strength_(strength) {}
+ 
+ void BotController::update() {

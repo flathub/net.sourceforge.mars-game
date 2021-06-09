@@ -1,0 +1,11 @@
+--- a/data/locales/locales.conf	2020-05-14 00:13:43.265614023 -0500
++++ b/data/locales/locales.conf	2020-05-14 00:14:04.311613079 -0500
+@@ -87,7 +87,7 @@
+ 
+ [ภาษาไทย]
+ file: Thai.txt
+-font: Waree.ttf
++font: Waree.otf
+ author: Manoch S. Xyteton
+ 
+ [Монгол]

@@ -1,7 +1,7 @@
 {
     "app-id": "net.sourceforge.mars-game",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "19.08",
+    "runtime-version": "20.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=dri",
@@ -70,11 +70,35 @@
                 },
                 {
                     "type": "patch",
-                    "path": "mars-Set-correct-datadir-for-prefix-usr.patch"
+                    "path": "patches/mars-Set-correct-datadir-for-prefix-usr.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "2f98279d1867c9cfbfacf4c0b3925edb38c03362.patch"
+                    "path": "patches/2f98279d1867c9cfbfacf4c0b3925edb38c03362.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/avoid-crash-because-of-missing-return-statement.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/marsshooter-crash-fix.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/marsshooter-crash-fix2.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/marsshooter-gcc11-fix.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/marsshooter-waree-type.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/appdata.patch"
                 }
             ]
         }
