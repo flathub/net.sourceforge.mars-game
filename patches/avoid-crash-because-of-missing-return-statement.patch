@@ -1,0 +1,72 @@
+From 61b2f879bf460645faf39b4729e355ea13ee6eec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bernhard=20=C3=9Cbelacker?= <bernhardu@mailbox.org>
+Date: Tue, 28 May 2019 10:30:01 +0200
+Subject: Avoid crash because of missing return statement.
+
+warning: no return statement in function returning non-void [-Wreturn-type]
+warning: control reaches end of non-void function [-Wreturn-type]
+
+Debian-Bug: https://bugs.debian.org/929513
+---
+ include/Specials/NoSpecial.hpp | 2 +-
+ include/Weapons/NoWeapon.hpp   | 6 +++---
+ src/Interface/Tab.cpp          | 2 ++
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/include/Specials/NoSpecial.hpp b/include/Specials/NoSpecial.hpp
+index 4c1c8d3..67c3fa4 100644
+--- a/include/Specials/NoSpecial.hpp
++++ b/include/Specials/NoSpecial.hpp
+@@ -32,7 +32,7 @@ class NoSpecial: public Special {
+         /// Does nothing.
+         void activate() const {}
+ 
+-        float radius() const {}
++        float radius() const { return 0.; }
+ 
+         /// Draws the special.
+         void draw(float alpha) const;
+diff --git a/include/Weapons/NoWeapon.hpp b/include/Weapons/NoWeapon.hpp
+index e739851..38c8b2c 100644
+--- a/include/Weapons/NoWeapon.hpp
++++ b/include/Weapons/NoWeapon.hpp
+@@ -35,13 +35,13 @@ class NoWeapon: public Weapon {
+         void draw(float alpha) const {}
+ 
+         /// Returns the maximum distance from which this weapon should be used.
+-        float maxDistance() const {}
++        float maxDistance() const { return 0.; }
+ 
+         /// Returns the minimum distance from which this weapon should be used.
+-        float minDistance() const {}
++        float minDistance() const { return 0.; }
+ 
+         /// Returns the maximum angle from which this weapon should be used.
+-        float maxAngle()   const {}
++        float maxAngle()   const { return 0.; }
+ };
+ 
+ # endif // NOWEAPON_HPP_INCLUDED
+diff --git a/src/Interface/Tab.cpp b/src/Interface/Tab.cpp
+index 19a7e26..e0dd57e 100644
+--- a/src/Interface/Tab.cpp
++++ b/src/Interface/Tab.cpp
+@@ -110,6 +110,7 @@ bool Tab::tabNext() {
+             return true;
+         }
+     }
++    return false;
+ }
+ 
+ bool Tab::tabPrevious() {
+@@ -140,6 +141,7 @@ bool Tab::tabPrevious() {
+             return true;
+         }
+     }
++    return false;
+ }
+ 
+ 
+-- 
+2.20.1
+

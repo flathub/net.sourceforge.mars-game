@@ -1,0 +1,18 @@
+--- M.A.R.S.-marsshooter-0.7.6/include/Hud/TabStats.hpp.orig	2020-12-19 16:05:03.831342974 +0100
++++ M.A.R.S.-marsshooter-0.7.6/include/Hud/TabStats.hpp	2020-12-19 16:07:47.641346184 +0100
+@@ -40,13 +40,13 @@
+ 
+     private:
+         struct playerPtrCmp{
+-            bool operator()(Player* lhs, Player* rhs){
++            bool operator()(const Player* lhs, const Player* rhs) const {
+                 return lhs->points_ > rhs->points_;
+             }
+         };
+ 
+         struct teamPtrCmp{
+-            bool operator()(Team* lhs, Team* rhs){
++            bool operator()(const Team* lhs, const Team* rhs) const {
+                 return lhs->points() > rhs->points();
+             }
+         };
