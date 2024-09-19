@@ -1,17 +1,17 @@
-From 8d88886ef7edbae2a7a63768fad98f4d89ccfc7d Mon Sep 17 00:00:00 2001
-From: bbhtt <bbhtt.zn0i8@slmail.me>
-Date: Sat, 9 Sep 2023 10:53:30 +0530
-Subject: [PATCH] Appdata patch
-
----
- resources/marsshooter.appdata.xml | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
-
-diff --git a/resources/marsshooter.appdata.xml b/resources/marsshooter.appdata.xml
-index 38321b1..92247d4 100644
---- a/resources/marsshooter.appdata.xml
-+++ b/resources/marsshooter.appdata.xml
-@@ -9,7 +9,7 @@
+--- a/resources/marsshooter.appdata.xml	2024-09-19 09:45:32.524455818 -0500
++++ b/resources/marsshooter.appdata.xml	2024-09-19 10:23:34.907537099 -0500
+@@ -1,15 +1,17 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <component type="desktop">
+-  <id>marsshooter.desktop</id>
++  <id>net.sourceforge.mars-game</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-3.0+ and CC-BY and CC-BY-SA</project_license>
+   <name>M.A.R.S. - A ridiculous shooter</name>
+   <summary>2D space shooter with awesome visual effects</summary>
++  <developer_name>marsshooter</developer_name>
++  <launchable type="desktop-id">marsshooter.desktop</launchable>
+   <description>
      <p>
       M.A.R.S. - a ridiculous shooter is a 2D space shooter with awesome visual
       effects and attractive physics. Players can battle each other or computer
@@ -20,10 +20,15 @@ index 38321b1..92247d4 100644
      </p>
      <p>
       In the year 3547, civilizations all over the galaxy have settled their own
-@@ -20,10 +20,16 @@
+@@ -19,11 +21,26 @@
+      planet from the oncoming doom of your jealous neighbours!
      </p>
    </description>
-   <url type="homepage">http://www.marsshooter.org/</url>
+-  <url type="homepage">http://www.marsshooter.org/</url>
++  <categories>
++    <category>Game</category>
++  </categories>
++  <url type="homepage">http://mars-game.sourceforge.net/</url>
 +  <releases>
 +    <release version="0.7.6" date="2016-01-10"/>
 +  </releases>
@@ -34,12 +39,15 @@ index 38321b1..92247d4 100644
 -    <screenshot type="default">http://mars-game.sourceforge.net/wordpress/wp-content/uploads/gallery/revision_175/screenshot_111211105029.jpg</screenshot>
 -    <screenshot>http://mars-game.sourceforge.net/wordpress/wp-content/uploads/gallery/revision_175/screenshot_111211104719.jpg</screenshot>
 -    <screenshot>http://mars-game.sourceforge.net/wordpress/wp-content/uploads/gallery/revision_175/screenshot_11121111229.jpg</screenshot>
-+    <screenshot type="default">https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot3.png</screenshot>
-+    <screenshot>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot1.png</screenshot>
-+    <screenshot>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot2.png</screenshot>
++    <screenshot type="default">
++      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot3.png</image>
++    </screenshot>
++    <screenshot>
++      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot1.png</image>
++    </screenshot>
++    <screenshot>
++      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot2.png</image>
++    </screenshot>
    </screenshots>
    <updatecontact>jwrdegoede_at_fedoraproject.org</updatecontact>
  </component>
--- 
-2.41.0
-
