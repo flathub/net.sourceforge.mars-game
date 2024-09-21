@@ -40,13 +40,13 @@
 -    <screenshot>http://mars-game.sourceforge.net/wordpress/wp-content/uploads/gallery/revision_175/screenshot_111211104719.jpg</screenshot>
 -    <screenshot>http://mars-game.sourceforge.net/wordpress/wp-content/uploads/gallery/revision_175/screenshot_11121111229.jpg</screenshot>
 +    <screenshot type="default">
-+      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot3.png</image>
++      <image>https://raw.githubusercontent.com/flathub/net.sourceforge.mars-game/refs/heads/master/screenshots/screenshot3.png</image>
 +    </screenshot>
 +    <screenshot>
-+      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot1.png</image>
++      <image>https://raw.githubusercontent.com/flathub/net.sourceforge.mars-game/refs/heads/master/screenshots/screenshot1.png</image>
 +    </screenshot>
 +    <screenshot>
-+      <image>https://raw.githubusercontent.com/bbhtt/net.sourceforge.mars-game/new-runtime/screenshots/screenshot2.png</image>
++      <image>https://raw.githubusercontent.com/flathub/net.sourceforge.mars-game/refs/heads/master/screenshots/screenshot2.png</image>
 +    </screenshot>
    </screenshots>
 -  <updatecontact>jwrdegoede_at_fedoraproject.org</updatecontact>
