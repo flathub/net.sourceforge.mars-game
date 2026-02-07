@@ -40,23 +40,6 @@
             ]
         },
         {
-            "name": "taglib",
-            "buildsystem": "cmake-ninja",
-            "cleanup": [
-                "/bin"
-            ],
-            "config-opts": [
-                "-DBUILD_SHARED_LIBS=ON"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://taglib.org/releases/taglib-1.11.1.tar.gz",
-                    "sha256": "b6d1a5a610aae6ff39d93de5efd0fdc787aa9e9dc1e7026fa4c961b26563526b"
-                }
-            ]
-        },
-        {
             "name": "mars-game",
             "buildsystem": "cmake-ninja",
             "config-opts": [
