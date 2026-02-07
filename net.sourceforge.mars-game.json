@@ -1,7 +1,7 @@
 {
     "app-id": "net.sourceforge.mars-game",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
     "finish-args": [
         "--device=dri",
@@ -16,7 +16,8 @@
         "/share/aclocal",
         "/share/gtk-doc",
         "/share/man",
-        "*.la", "*.a"
+        "*.la",
+        "*.a"
     ],
     "command": "marsshooter",
     "rename-appdata-file": "marsshooter.appdata.xml",
@@ -27,7 +28,8 @@
             "name": "SFML",
             "buildsystem": "cmake-ninja",
             "config-opts": [
-                "-DSFML_INSTALL_PKGCONFIG_FILES=TRUE"
+                "-DSFML_INSTALL_PKGCONFIG_FILES=TRUE",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             ],
             "sources": [
                 {
@@ -59,7 +61,8 @@
             "buildsystem": "cmake-ninja",
             "config-opts": [
                 "-Dmars_EXE_DEST_DIR=/app/bin",
-                "-Dmars_DATA_DEST_DIR=/app/share/marsshooter"
+                "-Dmars_DATA_DEST_DIR=/app/share/marsshooter",
+                "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
             ],
             "sources": [
                 {
