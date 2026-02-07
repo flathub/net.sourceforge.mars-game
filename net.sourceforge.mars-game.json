@@ -69,35 +69,16 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/mars-Set-correct-datadir-for-prefix-usr.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/2f98279d1867c9cfbfacf4c0b3925edb38c03362.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/avoid-crash-because-of-missing-return-statement.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/marsshooter-crash-fix.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/marsshooter-crash-fix2.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/marsshooter-gcc11-fix.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/marsshooter-waree-type.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/appdata.patch"
+                    "paths": [
+                        "patches/mars-Set-correct-datadir-for-prefix-usr.patch",
+                        "patches/2f98279d1867c9cfbfacf4c0b3925edb38c03362.patch",
+                        "patches/avoid-crash-because-of-missing-return-statement.patch",
+                        "patches/marsshooter-crash-fix.patch",
+                        "patches/marsshooter-crash-fix2.patch",
+                        "patches/marsshooter-gcc11-fix.patch",
+                        "patches/marsshooter-waree-type.patch",
+                        "patches/appdata.patch"
+                     ]
                 }
             ]
         }
