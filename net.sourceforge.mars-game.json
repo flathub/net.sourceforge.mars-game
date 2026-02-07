@@ -23,7 +23,6 @@
     "rename-desktop-file": "marsshooter.desktop",
     "rename-icon": "marsshooter",
     "modules": [
-        "shared-modules/gudev/gudev.json",
         {
             "name": "SFML",
             "buildsystem": "cmake-ninja",
