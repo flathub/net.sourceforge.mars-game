@@ -35,7 +35,10 @@
                 {
                     "type": "archive",
                     "url": "http://www.sfml-dev.org/files/SFML-2.5.1-sources.zip",
-                    "sha256": "bf1e0643acb92369b24572b703473af60bac82caf5af61e77c063b779471bb7f"
+                    "sha256": "bf1e0643acb92369b24572b703473af60bac82caf5af61e77c063b779471bb7f",
+                    "mirror-urls": [
+                        "https://github.com/SFML/SFML/releases/download/2.5.1/SFML-2.5.1-sources.zip"
+                    ]
                 }
             ]
         },
