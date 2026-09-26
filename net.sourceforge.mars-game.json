@@ -1,8 +1,12 @@
 {
     "app-id": "net.sourceforge.mars-game",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "25.08",
+    "runtime-version": "26.08",
     "sdk": "org.freedesktop.Sdk",
+    "command": "marsshooter",
+    "rename-appdata-file": "marsshooter.appdata.xml",
+    "rename-desktop-file": "marsshooter.desktop",
+    "rename-icon": "marsshooter",
     "finish-args": [
         "--device=dri",
         "--persist=.marsshooter",
@@ -19,10 +23,6 @@
         "*.la",
         "*.a"
     ],
-    "command": "marsshooter",
-    "rename-appdata-file": "marsshooter.appdata.xml",
-    "rename-desktop-file": "marsshooter.desktop",
-    "rename-icon": "marsshooter",
     "modules": [
         {
             "name": "SFML",
